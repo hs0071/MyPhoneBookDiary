@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System.IO;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyPhoneBookDiary.Migrations
 {
@@ -100,6 +101,8 @@ namespace MyPhoneBookDiary.Migrations
                 name: "IX_Phone_UserId",
                 table: "Phone",
                 column: "UserId");
+            var sqlFile = Path.Combine(".\\MyPhoneBookDiarySchemaAndData(1)", @" MyPhoneBookDiary.sql");
+            migrationBuilder.Sql(File.ReadAllText(sqlFile));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
